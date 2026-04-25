@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   Rocket,
@@ -18,22 +19,40 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { label: 'Dashboard', icon: LayoutDashboard },
-  { label: 'My Startups', icon: Rocket },
-  { label: 'Milestones', icon: Target },
-  { label: 'Mentors', icon: Users },
-  { label: 'Meetings', icon: Calendar },
-  { label: 'Messages', icon: MessageCircle },
-  { label: 'Lobby (Explore)', icon: Compass },
-  { label: 'Calendar', icon: Clock },
-  { label: 'Resources', icon: BookOpen },
-  { label: 'Analytics', icon: BarChart3 },
-  { label: 'Settings', icon: Settings },
+  { label: 'Dashboard', icon: LayoutDashboard, href: '/' },
+  { label: 'My Startups', icon: Rocket, href: '/my-startups' },
+  { label: 'Milestones', icon: Target, href: '/milestones' },
+  { label: 'Mentors', icon: Users, href: '/mentors' },
+  { label: 'Meetings', icon: Calendar, href: '/meetings' },
+  { label: 'Messages', icon: MessageCircle, href: '/messages' },
+  { label: 'Lobby (Explore)', icon: Compass, href: '/lobby' },
+  { label: 'Calendar', icon: Clock, href: '/calendar' },
+  { label: 'Resources', icon: BookOpen, href: '/resources' },
+  { label: 'Analytics', icon: BarChart3, href: '/analytics' },
+  { label: 'Settings', icon: Settings, href: '/settings' },
 ];
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeNav = 'Dashboard';
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const getActiveNav = () => {
+    if (pathname === '/') return 'Dashboard';
+    if (pathname === '/my-startups') return 'My Startups';
+    if (pathname === '/milestones') return 'Milestones';
+    if (pathname === '/mentors') return 'Mentors';
+    if (pathname === '/meetings') return 'Meetings';
+    if (pathname === '/messages') return 'Messages';
+    if (pathname === '/lobby') return 'Lobby (Explore)';
+    if (pathname === '/calendar') return 'Calendar';
+    if (pathname === '/resources') return 'Resources';
+    if (pathname === '/analytics') return 'Analytics';
+    if (pathname === '/settings') return 'Settings';
+    return 'Dashboard';
+  };
+
+  const activeNav = getActiveNav();
 
   return (
     <>
@@ -73,7 +92,10 @@ export default function Sidebar() {
               return (
                 <li key={item.label}>
                   <button
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      router.push(item.href);
+                      setIsOpen(false);
+                    }}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2.5 text-sm font-medium ${
                       activeNav === item.label
                         ? 'bg-blue-50 text-blue-600'
