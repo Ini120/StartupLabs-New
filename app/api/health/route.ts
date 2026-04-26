@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
-    // Test connection to Supabase
-    const { data, error } = await supabaseAdmin
+    const { error } = await supabaseAdmin
       .from('users')
-      .select('count');
+      .select('*')
+      .limit(1);
 
     if (error) {
       return NextResponse.json(
