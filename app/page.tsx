@@ -1,32 +1,4 @@
-<<<<<<< HEAD
 "use client";
-=======
-import Sidebar from '@/components/Sidebar';
-import Header from '@/components/Header';
-import StatCard from '@/components/StatCard';
-import ProfileCard from '@/components/ProfileCard';
-import ProgressChart from '@/components/ProgressChart';
-import MilestoneChart from '@/components/MilestoneChart';
-import StartupCard from '@/components/StartupCard';
-import MentorCard from '@/components/MentorCard';
-import MeetingCard from '@/components/MeetingCard';
-import MessageCard from '@/components/MessageCard';
-import Link from 'next/link';
-import {
-  Rocket,
-  ListTodo,
-  CheckCircle,
-  TrendingUp,
-  CheckSquare,
-  Activity,
-  BookOpen,
-  Sprout,
-  Zap,
-  Activity as ActivityIcon,
-  Coins,
-  Award,
-} from 'lucide-react';
->>>>>>> d3af74e (save local changes)
 
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -270,7 +242,6 @@ export default function Home() {
   }
 
   return (
-<<<<<<< HEAD
     <div
       className="dashboard-shell min-h-screen bg-bg pb-22 text-slate-900 md:pb-0"
       data-sidebar-collapsed={sidebarCollapsed ? "true" : "false"}
@@ -281,16 +252,6 @@ export default function Home() {
         collapsed={sidebarCollapsed}
         setCollapsed={setSidebarCollapsed}
       />
-=======
-<<<<<<< HEAD
-    <div className="dashboard-shell min-h-screen bg-bg text-slate-900">
-      <Sidebar activeStartup={activeStartup} setActiveStartup={setActiveStartup} />
-=======
-    <div className="flex h-screen bg-gray-50 overflow-hidden flex-col lg:flex-row">
-      {/* Sidebar */}
-      <Sidebar />
->>>>>>> d3af74e (save local changes)
->>>>>>> d666c9af668010e113b619f50a9221edfe6aa955
 
       <main className="min-h-screen min-w-0 bg-bg">
         <Topbar startup={startup} />
@@ -317,169 +278,29 @@ export default function Home() {
             </nav>
           </section>
 
-<<<<<<< HEAD
           {activeTab === "info" ? (
-            <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
-              <article className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6">
-                <header className="flex flex-col gap-4 border-b border-gray-200 pb-4 sm:flex-row sm:items-center sm:justify-between">
+            <section className="grid gap-6 grid-cols-[minmax(0,1fr)_320px] ">
+              <article className="rounded-2xl border border-gray-200 bg-white p-6">
+                <header className="flex items-center justify-between gap-4 border-b border-gray-200 pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center border border-gray-200 bg-gray-100 font-syne text-lg font-extrabold text-slate-900 sm:h-12 sm:w-12">
+                    <div className="flex h-12 w-12 items-center justify-center  border border-gray-200 bg-gray-100 font-syne text-lg font-extrabold text-slate-900">
                       {startup.name.slice(0, 2).toUpperCase()}
                     </div>
-                    <div className="min-w-0">
-                      <h2 className="font-syne text-2xl font-extrabold leading-none tracking-tight text-slate-900 sm:text-3xl">
+                    <div>
+                      <h2 className="font-syne text-[30px] font-extrabold leading-none tracking-tight text-slate-900">
                         {startup.name}
                       </h2>
-                      <p className="mt-1 font-space text-base text-gray-500 sm:text-lg">
+                      <p className="font-space text-[20px]  text-gray-500">
                         {startup.description}
                       </p>
                     </div>
                   </div>
-                  <span className="inline-flex w-fit rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 sm:text-sm">
+                  <span className="rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-700">
                     {profile.jobs.length} Jobs
                   </span>
                 </header>
-=======
-<<<<<<< HEAD
-          {activeTab === 'info' ? (
-            <div className="space-y-6">
-              <section className="grid gap-3 lg:grid-cols-4">
-                {infoMetrics.map((metric) => (
-                  <article key={metric.label} className="rounded-2xl border border-border bg-card px-5 py-4">
-                    <p className="font-space text-[10px] uppercase tracking-[1.2px] text-brand-muted">{metric.label}</p>
-                    <p className="mt-2 font-syne text-[28px] font-extrabold tracking-tight text-slate-900">{metric.value}</p>
-                    <p className="mt-1 font-space text-[11px] text-brand-muted">{metric.helper}</p>
-                  </article>
-=======
-          {/* Main Content Grid */}
-          <div className="p-4">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-              {/* Left Column - Profile */}
-              <div className="lg:col-span-2 space-y-4">
-                <ProfileCard />
-              </div>
 
-              {/* Middle Column - Charts and Startups */}
-              <div className="lg:col-span-5 space-y-4">
-                {/* Charts Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <ProgressChart />
-                  <MilestoneChart />
-                </div>
-
-                {/* My Startups Section */}
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-base font-bold text-gray-900">My Startups</h3>
-                    <Link href="/my-startups" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-                      View All
-                    </Link>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {myStartups.map((startup) => (
-                      <StartupCard
-                        key={startup.name}
-                        name={startup.name}
-                        icon={startup.icon}
-                        category={startup.category}
-                        status={startup.status}
-                        progress={startup.progress}
-                        color={startup.color}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column - Mentor, Meetings, Messages */}
-              <div className="lg:col-span-5 space-y-4">
-                {/* Mentor Card */}
-                <MentorCard
-                  name="David Thompson"
-                  role="Growth Mentor"
-                  status="Available"
-                  bio="Helping founders scale their product and grow revenue."
-                  avatar="🚀"
-                />
-
-                {/* Upcoming Meetings */}
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-base font-bold text-gray-900">Upcoming Meetings</h3>
-                    <Link href="/meetings" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-                      View All
-                    </Link>
-                  </div>
-                  {meetings.map((meeting, idx) => (
-                    <MeetingCard
-                      key={idx}
-                      title={meeting.title}
-                      with={meeting.with}
-                      time={meeting.time}
-                      date={meeting.date}
-                      avatar={meeting.avatar}
-                    />
-                  ))}
-                </div>
-
-                {/* Messages */}
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-base font-bold text-gray-900">Messages</h3>
-                    <Link href="/messages" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-                      View All
-                    </Link>
-                  </div>
-                  <div className="space-y-0.5">
-                    {messages.map((message, idx) => (
-                      <MessageCard
-                        key={idx}
-                        name={message.name}
-                        message={message.message}
-                        time={message.time}
-                        avatar={message.avatar}
-                        unread={message.unread}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Section - Top Startups in Lobby */}
-            <div className="mt-4 bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-bold text-gray-900">Top Startups in Lobby</h3>
-                <Link href="/lobby" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-                  View All
-                </Link>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {lobbyStartups.map((startup) => (
-                  <div key={startup.name} className="p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-sm">
-                        {startup.icon}
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-xs">{startup.name}</p>
-                        <p className="text-xs text-gray-500">{startup.category}</p>
-                      </div>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-1.5">
-                      <div
-                        className="h-1.5 rounded-full bg-blue-500 transition-all duration-300"
-                        style={{ width: `${startup.progress}%` }}
-                      />
-                    </div>
-                    <p className="text-xs text-gray-600 mt-1 text-right">{startup.progress}%</p>
-                  </div>
->>>>>>> d3af74e (save local changes)
-                ))}
-              </section>
->>>>>>> d666c9af668010e113b619f50a9221edfe6aa955
-
-                <nav className="mt-4 flex flex-wrap items-center gap-2 border-b border-gray-200 pb-3 sm:gap-3">
+                <nav className="mt-4 flex items-center gap-3 border-b border-gray-200 pb-3">
                   {(["company", "jobs", "news"] as CompanyTab[]).map((tab) => {
                     const active = tab === activeCompanyTab;
                     const label = tab.charAt(0).toUpperCase() + tab.slice(1);
@@ -498,13 +319,13 @@ export default function Home() {
 
                 {activeCompanyTab === "company" ? (
                   <div className="mt-5 space-y-4">
-                    <h3 className="font-syne text-2xl font-bold text-slate-900 sm:text-[32px]">
+                    <h3 className="font-syne text-[32px] font-bold text-slate-900">
                       About
                     </h3>
                     {profile.about.map((paragraph) => (
                       <p
                         key={paragraph.slice(0, 28)}
-                        className="text-base leading-relaxed text-gray-700 sm:text-[20px]"
+                        className="text-[20px] leading-relaxed text-gray-700"
                       >
                         {paragraph}
                       </p>
@@ -514,16 +335,16 @@ export default function Home() {
 
                 {activeCompanyTab === "jobs" ? (
                   <div className="mt-5 space-y-3">
-                    <h3 className="font-syne text-2xl font-bold text-slate-900 sm:text-[32px]">
+                    <h3 className="font-syne text-[32px] font-bold text-slate-900">
                       Open Roles
                     </h3>
                     {profile.jobs.map((job) => (
                       <div
                         key={`${job.title}-${job.location}`}
-                        className="flex flex-col gap-3 rounded-xl border border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between"
+                        className="flex items-center justify-between rounded-xl border border-gray-200 p-4"
                       >
                         <div>
-                          <p className="font-syne text-base font-bold text-slate-900 sm:text-lg">
+                          <p className="font-syne text-lg font-bold text-slate-900">
                             {job.title}
                           </p>
                           <p className="text-sm text-gray-500">
@@ -543,7 +364,7 @@ export default function Home() {
 
                 {activeCompanyTab === "news" ? (
                   <div className="mt-5 space-y-3">
-                    <h3 className="font-syne text-2xl font-bold text-slate-900 sm:text-[32px]">
+                    <h3 className="font-syne text-[32px] font-bold text-slate-900">
                       What&apos;s New
                     </h3>
                     {profile.news.map((item) => (
@@ -551,11 +372,11 @@ export default function Home() {
                         key={`${item.title}-${item.date}`}
                         className="rounded-xl border border-gray-200 p-4"
                       >
-                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-                          <p className="font-syne text-base font-bold text-slate-900 sm:text-lg">
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="font-syne text-lg font-bold text-slate-900">
                             {item.title}
                           </p>
-                          <span className="text-xs text-gray-500 sm:text-sm">
+                          <span className="text-sm text-gray-500">
                             {item.date}
                           </span>
                         </div>
@@ -569,14 +390,16 @@ export default function Home() {
               </article>
 
               <aside className="self-start rounded-2xl border border-gray-200 bg-white p-5 xl:sticky xl:top-6">
-                <div>
-                  <h2 className="font-syne text-2xl font-extrabold leading-none tracking-tight text-slate-900 sm:text-[30px]">
-                    {startup.name}
-                  </h2>
-                  <p className="mt-1 font-space text-base text-gray-500 sm:text-[20px]">
-                    {startup.description}
-                  </p>
-                </div>
+                <h3 className="font-syne text-2xl font-bold text-slate-900">
+                  <div>
+                    <h2 className="font-syne text-[30px] font-extrabold leading-none tracking-tight text-slate-900">
+                      {startup.name}
+                    </h2>
+                    <p className="font-space text-[20px]  text-gray-500">
+                      {startup.description}
+                    </p>
+                  </div>
+                </h3>
                 <div className="mt-4 space-y-2 text-sm">
                   <div className="flex items-center justify-between border-b border-gray-100 py-1.5">
                     <span className="text-gray-500">Founded</span>
