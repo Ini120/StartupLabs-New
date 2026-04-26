@@ -1,31 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --dashboard-bg: #f7f8fc;
+  --background: #f5f7fb;
+  --background-2: #ffffff;
+  --background-3: #eef2f8;
+  --card: #ffffff;
+  --card-2: #f8fafc;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --border-color-2: rgba(15, 23, 42, 0.14);
+  --brand-muted: #64748b;
+  --brand-dim: #94a3b8;
+  --brand-text: #0f172a;
+  --brand-accent: #7c6aff;
+  --brand-accent-2: #bf5fff;
+  --status-green: #22d87a;
+  --status-green-bg: rgba(34, 216, 122, 0.09);
+  --status-green-border: rgba(34, 216, 122, 0.19);
+  --status-red: #ff4d6d;
+  --status-red-bg: rgba(255, 77, 109, 0.09);
+  --status-red-border: rgba(255, 77, 109, 0.19);
+  --status-gray: #6b6880;
+  --status-gray-bg: rgba(107, 104, 128, 0.09);
+  --status-gray-border: rgba(107, 104, 128, 0.19);
+  --status-amber: #ffb830;
+  --status-amber-bg: rgba(255, 184, 48, 0.09);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--background);
+  --color-bg-2: var(--background-2);
+  --color-bg-3: var(--background-3);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-border: var(--border-color);
+  --color-border-2: var(--border-color-2);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-dim: var(--brand-dim);
+  --color-brand-text: var(--brand-text);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent2: var(--brand-accent-2);
+  --color-status-green: var(--status-green);
+  --color-status-green-bg: var(--status-green-bg);
+  --color-status-green-border: var(--status-green-border);
+  --color-status-red: var(--status-red);
+  --color-status-red-bg: var(--status-red-bg);
+  --color-status-red-border: var(--status-red-border);
+  --color-status-gray: var(--status-gray);
+  --color-status-gray-bg: var(--status-gray-bg);
+  --color-status-gray-border: var(--status-gray-border);
+  --color-status-amber: var(--status-amber);
+  --color-status-amber-bg: var(--status-amber-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-syne {
+  font-family: var(--font-syne), sans-serif;
+}
+
+.font-space {
+  font-family: var(--font-space), sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  color: var(--brand-text);
   font-size: 14px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
+  min-height: 100%;
 }
 
 @keyframes fadeInUp {
@@ -67,4 +111,24 @@ body {
 
 .pulse-dot.delay-300 {
   animation-delay: 300ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  color-scheme: light;
+}
+
+body, html {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .dashboard-shell {
+    padding-left: 252px;
+  }
 }
