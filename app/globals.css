@@ -129,6 +129,12 @@ body, html {
 
 @media (min-width: 768px) {
   .dashboard-shell {
-    padding-left: 252px;
+    --sidebar-width: 252px;
+    padding-left: var(--sidebar-width);
+    transition: padding-left 200ms ease;
+  }
+
+  .dashboard-shell[data-sidebar-collapsed='true'] {
+    --sidebar-width: 96px;
   }
 }
