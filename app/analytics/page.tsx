@@ -4,6 +4,7 @@ import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import StatCard from '@/components/StatCard';
 import { BarChart3, CheckCircle2, Clock3, TrendingUp } from 'lucide-react';
+import { SetStateAction } from 'react';
 
 const KPI_ITEMS = [
   {
@@ -134,7 +135,11 @@ export default function AnalyticsPage() {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
-      <Sidebar />
+      <Sidebar activeStartup={'Vertex'} setActiveStartup={function (value: SetStateAction<'Vertex' | 'Voxel' | 'Pulse.ai' | 'Kinetik' | 'Nomad' | 'Orbis' | 'Synth'>): void {
+        throw new Error('Function not implemented.');
+      } } collapsed={false} setCollapsed={function (value: SetStateAction<boolean>): void {
+        throw new Error('Function not implemented.');
+      } } />
 
       <main className="flex-1 flex flex-col overflow-hidden">
         <Header />
